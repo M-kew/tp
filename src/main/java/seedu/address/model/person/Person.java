@@ -26,16 +26,22 @@ public class Person {
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
+    private Appointment appointmentDate;
+    private Birthday birthday;
+
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Birthday birthday,
+                  Appointment appointmentDate) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.appointmentDate = appointmentDate;
+        this.birthday = birthday;
     }
 
     public Name getName() {
@@ -53,6 +59,15 @@ public class Person {
     public Address getAddress() {
         return address;
     }
+
+    public Appointment getAppointmentDate() {
+        return appointmentDate;
+    }
+
+    public Birthday getBirthday() {
+        return birthday;
+    }
+
 
     /**
      * Returns a comparator that compares persons by name in lexicographic order.
